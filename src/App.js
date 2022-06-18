@@ -1,36 +1,41 @@
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
-
 import './App.css';
-
 import Home from './components/Home'
 import About from './components/About'
 import Packages from './components/Packages'
-
+import Nav from 'react-bootstrap/Nav'
+import Container from 'react-bootstrap/Container'
 
 function App() {
   
   const packages = ['Activate your Crystals', 'Monkey Meditation', 'Soak in the Hotsprings', 'Hypnotherapy', 'Mineral Bath']
 
-
   return (
     <div className="App">
       <Router>
         <header>
-          <h1 className="title">Welcome to Monty's Mineral SPA</h1>
-
-          <div className="navBar">
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/about">About Us</Link>
-              </li>
-              <li>
-                <Link to="/packages">Our Packages</Link>
-              </li>
-            </ul>
-          </div>
+          <h1 className="title">Monty's Mineral SPA</h1>
+          <Container>
+            {/* props that allow for customization (varient will have tab design, fill will evenly space items) */}
+            <Nav defaultActiveKey="/" variant="tabs" fill>
+              <Nav.Item>
+                <Nav.Link href="/">
+                  {/* <Link> components represent the React Router DOM/dynamic routing */}
+                  <Link to="/">Home</Link>
+                </Nav.Link>
+              </Nav.Item>
+              <Nav.Item >
+                <Nav.Link eventKey={"aboutPage"}> 
+                  <Link to="/about">About Us</Link>
+                </Nav.Link>
+              </Nav.Item>
+              <Nav.Item >
+                <Nav.Link eventKey={"packagesPage"}> 
+                  <Link to="/packages">Our Packages</Link> 
+                </Nav.Link>
+              </Nav.Item>
+            </Nav>
+          </Container>
         </header>
 
         <div className="display">
@@ -46,8 +51,3 @@ function App() {
 }
 
 export default App;
-
-
-
-
-
